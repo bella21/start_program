@@ -4,15 +4,19 @@ import os
 import datetime
 import socket
 import json
-from urlparse import unquote
 
+try:
+    from urlparse import unquote
+except ImportError:
+    from urllib.parse import unquote
 
 '''configure the log'''
 import logging.handlers
 import ctypes
+
 infile = 'remote_sock_server.log'
-handler = logging.handlers.RotatingFileHandler(infile, mode='a', maxBytes=500*1024*1024, backupCount=3)
-fmt='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s'
+handler = logging.handlers.RotatingFileHandler(infile, mode='a', maxBytes=500 * 1024 * 1024, backupCount=3)
+fmt = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s'
 
 formatter = logging.Formatter(fmt)
 handler.setFormatter(formatter)
@@ -20,7 +24,6 @@ handler.setFormatter(formatter)
 logger = logging.getLogger(__name__)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
-
 
 # IP和端口。注意防火墙。
 local_ip = '10.180.90.31'
@@ -55,7 +58,7 @@ while 1:
     # logger.error('Environment variable SIMPLE_SCHEDULER_SLACK_URL is not specified. '
     #                      'So we cannot send slack message.')
 
-    logger.info( '%s, visitor: %s:%s' % (now_dt, peer_name[0], peer_name[1])  ) # sock_name
+    logger.info('%s, visitor: %s:%s' % (now_dt, peer_name[0], peer_name[1]))  # sock_name
 
     params = json.loads(msg)
     msg_type = params['msg_type']
@@ -81,4 +84,3 @@ while 1:
 
             logger.info(command)
             os.system(command)
-

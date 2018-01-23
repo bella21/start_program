@@ -7,13 +7,17 @@ from __future__ import with_statement
 import yaml
 import socket
 import json
-from urllib import quote
+
+try:
+    from urllib import quote
+except ImportError:
+    from urllib.parse import quote
 
 '''configure the log'''
 import logging.handlers
 
 infile = 'remote_job.log'
-handler = logging.handlers.RotatingFileHandler(infile, mode='a', maxBytes=500*1024*1024, backupCount=3)
+handler = logging.handlers.RotatingFileHandler(infile, mode='a', maxBytes=500 * 1024 * 1024, backupCount=3)
 fmt = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s'
 
 formatter = logging.Formatter(fmt)
@@ -25,7 +29,6 @@ logger.setLevel(logging.INFO)
 
 
 class RemoteJobSock():
-
     @classmethod
     def create_test_instance(cls):
         """Creates an instance of this class for testing."""
@@ -89,4 +92,4 @@ class RemoteJobSock():
 if __name__ == "__main__":
     # You can easily test this job here
     job = RemoteJobSock.create_test_instance()
-    job.run({"task_name":"remote_task1"})
+    job.run({"task_name": "remote_task1"})
