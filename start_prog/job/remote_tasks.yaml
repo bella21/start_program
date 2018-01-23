@@ -3,7 +3,7 @@ remote_task1:
   name: 远程任务
   remote_ip: 10.180.90.31
   remote_port: 43218
-  remote_pc_desc: zbl工作用机。
+  remote_pc_desc: zhangbl工作用机。
   notes: 盯市模板1 excel
   params:
     msg:
@@ -16,7 +16,7 @@ remote_task2:
   name: 远程任务
   remote_ip: 10.180.90.31
   remote_port: 43218
-  remote_pc_desc: 秦超逸工作用机。
+  remote_pc_desc: xxx工作用机。
   notes: 打开outlook。
   params:
     msg:
@@ -27,10 +27,10 @@ remote_task2:
 
 remote_task3:
   name: 远程任务
-  remote_ip: 10.180.90.11
+  remote_ip: 10.180.90.31
   remote_port: 43218
-  remote_pc_desc: 秦超逸工作用机。
-  notes: 打开同花顺。
+  remote_pc_desc: xxx工作用机。
+  notes: 打开Wind万得。
   params:
     msg:
       msg_type: run_py
@@ -40,9 +40,9 @@ remote_task3:
 
 remote_task4:
   name: 远程任务
-  remote_ip: 10.180.90.11
+  remote_ip: 10.180.90.31
   remote_port: 43218
-  remote_pc_desc: 秦超逸工作用机。
+  remote_pc_desc: xxx工作用机。
   notes: 打开pgAdmin和ramp_check的sql语句。
   params:
     msg:
